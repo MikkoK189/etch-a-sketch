@@ -1,18 +1,9 @@
 .grid-container {
-  max-width: 500px;
-  width: 500px;
+  width: 900px;
   margin: auto;
   display: flex;
-
   justify-content: center;
   align-items: center;
-}
-
-.row-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
 }
 
 .column-container {
@@ -20,6 +11,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  flex: 1 1 100%;
 }
 
 .box {
@@ -29,10 +21,11 @@
   border-width: 1px;
   background-color: azure;
   aspect-ratio: 1;
-  width: 10px;
-  height: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hover {
-  background-color: black;
+  /* background-color: black; */
+  border-style: none;
 }

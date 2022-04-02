@@ -1,6 +1,6 @@
 const gridContainer = document.querySelector(".grid-container");
 
-let gridSize = 100;
+let gridSize = 16;
 let colArray = [];
 let black = false;
 
@@ -14,6 +14,7 @@ function createGrid(gridSize) {
       gridSquare.classList.add("box");
       gridSquare.setAttribute("id", `${x} ${y}`);
       gridSquare.addEventListener("mouseenter", hoverOver);
+      gridSquare.textContent = " ";
       colArray[x].appendChild(gridSquare);
     }
   }
@@ -23,11 +24,13 @@ function hoverOver(e) {
   let randomColor = Math.floor(Math.random() * 16777215).toString(16);
   console.log(e.target.id);
   if (!black) {
+    e.target.classList.add("hover");
     document.getElementById(
       e.target.id
     ).style.backgroundColor = `#${randomColor}`;
   } else {
     e.target.classList.add("hover");
+    document.getElementById(e.target.id).style.backgroundColor = `black`;
   }
 }
 
