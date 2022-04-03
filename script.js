@@ -1,8 +1,10 @@
 const gridContainer = document.querySelector(".grid-container");
+const blackButton = document.querySelector("#black");
+const resetButton = document.querySelector("#reset");
 
 let gridSize = 16;
 let colArray = [];
-let black = false;
+let black = true;
 
 function createGrid(gridSize) {
   for (let x = 0; x < gridSize; x++) {
@@ -34,4 +36,34 @@ function hoverOver(e) {
   }
 }
 
+function clearGrid() {
+  let conts = document.getElementsByClassName("column-container");
+  let boxes = document.getElementsByClassName("box");
+
+  while (boxes[0]) {
+    boxes[0].parentNode.removeChild(boxes[0]);
+  }
+
+  while (conts[0]) {
+    conts[0].parentNode.removeChild(conts[0]);
+  }
+}
+
 createGrid(gridSize);
+
+resetButton.addEventListener("click", resetGrid);
+
+function resetGrid() {
+  clearGrid();
+  let newSize = prompt("Enter a size for the new grid (1 - 100)");
+  if (Number(newSize) < 1 || Number(newSize) > 100 || isNaN(newSize)) {
+    resetGrid();
+  } else {
+    createGrid(newSize);
+  }
+}
+
+blackButton.addEventListener("click", function () {
+  blackButton.classList.toggle("active");
+  black = !black;
+});
